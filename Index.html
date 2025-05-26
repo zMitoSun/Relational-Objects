@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <title>Objetos Relacionais</title>
+    <!-- Importação da fonte Ubuntu -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Style.css">
+  </head>
+  <body>
+    <header>
+      <div class="controls">
+        <input type="text" id="objName" placeholder="Nome do objeto">
+        <input type="text" id="objDesc" placeholder="Descrição">
+        
+        <!-- Botão Criar -->
+        <button onclick="addObject()" class="btn create">
+          <span>Criar</span> <i class="icon">+</i>
+        </button>
+        
+        <select id="fromObj"></select>
+        <select id="toObj"></select>
+        
+        <button onclick="connectObjects()" class="btn connect">Conectar</button>
+        
+        <!-- Botão Exportar JSON -->
+        <button onclick="exportToJSON()" class="btn export">
+          <span>JSON</span> <i class="icon">&#x2193;</i>
+        </button>
+        
+        <!-- Botão Importar JSON -->
+        <label for="importFile" class="btn import">
+          <span>JSON</span> <i class="icon">&#x2191;</i>
+        </label>
+        <input type="file" id="importFile" accept=".json" onchange="importFromJSON(event)" hidden>
+        
+        <!-- Grupo Remover Conexões -->
+        <div class="undo">
+          <label for="connectionToRemove">Cortar laços:</label>
+          <select id="connectionToRemove"></select>
+          <button onclick="removeSelectedConnection()" class="btn cut">Cortar laços</button>
+        </div>
+      </div>
+      
+      <!-- Overview (miniatura) -->
+      <div id="overview">
+        <div id="overviewContent"></div>
+      </div>
+    </header>
+    
+    <main id="canvas">
+      <div id="workspace">
+        <svg id="connections"></svg>
+      </div>
+    </main>
+    
+    <!-- Modal para edição -->
+    <div id="popupModal" class="modal">
+      <div class="modal-content">
+        <!-- Conteúdo inserido via JavaScript -->
+      </div>
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
